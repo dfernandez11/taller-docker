@@ -8,7 +8,7 @@ Se le puede especificar opciones:
 - --retries=N (default: 3)
 
 Ej:
-'''sh
+'''
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost/ || exit 1
 '''
@@ -17,7 +17,7 @@ HEALTHCHECK --interval=5m --timeout=3s \
 Agrega a la imagen un trigger que se ejecutará en un momento posterior, cuando la imagen se use como base para otro build. El trigger se ejecutará como si se hubiera insertado inmediatamente después de la instrucción FROM.
 
 ej:
-'''sh
+''' 
 ONBUILD ADD . /app/src
 ONBUILD RUN /usr/local/bin/python-build --dir /app/src
 '''
@@ -26,7 +26,7 @@ ONBUILD RUN /usr/local/bin/python-build --dir /app/src
 Sirve para crear puntos de montado y lo marca como que contiene volúmenes montados externamente desde el host nativo u otros contenedores
 
 Ej:
-'''sh
+''' 
 FROM ubuntu
 RUN mkdir /myvol
 RUN echo "hello world" > /myvol/greeting
