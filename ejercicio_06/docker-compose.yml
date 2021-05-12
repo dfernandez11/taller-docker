@@ -2,9 +2,20 @@ version: "3"
 
 services:
   passwordapi:
-    image: "dfernandez11/ejercicio04:0.1"
+    image: "nicopaez/password-api"
     expose:
-      - "8080"
+      - "3000"
+    networks:
+      vpcbr:
+        ipv4_address: 174.17.0.4
+
+  passwordapi2:
+    image: "nicopaez/password-api"
+    expose:
+      - "3000"
+    networks:
+      vpcbr:
+        ipv4_address: 174.17.0.5
   nginx:
     image: nginx:latest
     volumes:
@@ -13,3 +24,14 @@ services:
       - passwordapi
     ports:
       - "8081:8081"
+    networks:
+      vpcbr:
+        ipv4_address: 174.17.0.6
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 174.17.0.0/16
+         gateway: 174.17.0.1
